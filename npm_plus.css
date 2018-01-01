@@ -7,14 +7,33 @@
 
 .manager-menu {
     background: #fff;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.33);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     color: #222;
     border: 1px solid #ccc;
     border-radius: 2px;
-    left: -2rem;
+    left: -5rem;
     padding: .25rem .5rem;
     position: absolute;
+    text-align: right;
     user-select: none;
+    width: 6rem;
     z-index: 100;
 }
 
+
+.collaborated-packages li {
+    padding: .5rem .25rem !important;
+    border: 1px solid #ccc;
+    border-bottom: 0 solid transparent;
+}
+
+.collaborated-packages li:first-child {
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+}
+
+.collaborated-packages li:last-child {
+    border-bottom: 1px solid #ccc;
+    border-bottom-left-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+}

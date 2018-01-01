@@ -176,6 +176,18 @@ const getPackagesFromStorage = () => {
  */
 const hideOrShow = v => v ? 'block' : 'none';
 
+function sortByName (a, b) {
+    const nameA = a.name.toLowerCase();
+    const nameB = b.name.toLowerCase();
+    if (nameA < nameB) {
+        return -1;
+    }
+    if (nameA > nameB) {
+        return 1;
+    }
+    return 0;
+}
+
 if (isOwnAccount()) {
     let openedHiddenPackages = false;
     const packages = getPackages();
@@ -186,6 +198,22 @@ if (isOwnAccount()) {
         const packagesData = getPackagesFromStorage() || Array.from(packages).map(pkg => packageToData(pkg));
         //chrome.storage.local.set({ 'packages': packagesData });
 
+        document.querySelector('.collaborated-packages').innerHTML = '';
+
+        const genPackageList = (packagesData) => {
+            return packagesData.filter(i => !i.hidden).sort(sortByName).map((item, index) => {
+                return `<li>
+                    <a href='/package/${item.name}'>${item.name}</a>
+                    -
+                    <strong>${item.version}</strong>
+                    -
+                    ${(/[^-]+$/g.exec(item.description) || [])[0]}
+                </li>`
+            }).join('');
+        }
+
+        document.querySelector('.collaborated-packages').innerHTML = genPackageList(packagesData);
+
         console.log(packagesData.filter(p => p.hidden).length, ' hidden packages');
 
 
@@ -193,7 +221,7 @@ if (isOwnAccount()) {
         handleHidden(openedHiddenPackages,  packages );
         handleBodyEventListener();
 
-        packages.forEach((pkg, index) => {
+        getPackages().forEach((pkg, index) => {
             pkg.insertAdjacentElement('afterbegin', createPackageManager({
                 data: packagesData[index],
                 pkg,
