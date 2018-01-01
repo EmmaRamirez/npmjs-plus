@@ -7,7 +7,7 @@ This chrome extension improves some of the experience around npmjs.com, not npm'
 ## How To Enable
 
 ```
-git clone 
+git clone git@github.com:EmmaRamirez/npmjs-plus.git
 ```
 
 Got to `chrome://extensions/`, and click 'Developer Mode'
