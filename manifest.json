@@ -1,0 +1,22 @@
+{
+    "manifest_version": 2,
+
+    "name": "npmjs+",
+    "description": "Improve the experience around npmjs.com",
+    "version": "0.0.0",
+
+    "content_scripts": [
+        {
+            "matches": ["https://*.npmjs.com/*"],
+            "css": ["npm_plus.css"],
+            "js": ["index.js"]
+        }
+    ],
+
+    "permissions": [
+        "activeTab",
+        "storage",
+        "tabs",
+        "https://*.npmjs.com/*"
+    ]
+}
