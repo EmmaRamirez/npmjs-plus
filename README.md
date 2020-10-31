@@ -1,3 +1,5 @@
+> This extension is no longer being maintained, please feel free to message me if you would like to take over it, but I no longer believe that it serves a useful function.
+
 # npmjs+
 
 This chrome extension improves some of the experience around npmjs.com, not npm's package manager.
